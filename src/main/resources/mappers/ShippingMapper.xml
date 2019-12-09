@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mmall.dao.ShippingMapper" >
+  <resultMap id="BaseResultMap" type="com.mmall.pojo.Shipping" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="receiver_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recriver_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recriver_mobile" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recriver_province" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recriver_city" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="revriver_district" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="revriver_address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="revriver_zip" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_id, receiver_name, recriver_phone, recriver_mobile, recriver_province, recriver_city, 
+    revriver_district, revriver_address, revriver_zip, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from mmall_shipping
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mmall_shipping
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mmall.pojo.Shipping" >
+    insert into mmall_shipping (id, user_id, receiver_name, 
+      recriver_phone, recriver_mobile, recriver_province, 
+      recriver_city, revriver_district, revriver_address, 
+      revriver_zip, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, 
+      #{recriverPhone,jdbcType=VARCHAR}, #{recriverMobile,jdbcType=VARCHAR}, #{recriverProvince,jdbcType=VARCHAR}, 
+      #{recriverCity,jdbcType=VARCHAR}, #{revriverDistrict,jdbcType=VARCHAR}, #{revriverAddress,jdbcType=VARCHAR}, 
+      #{revriverZip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mmall.pojo.Shipping" >
+    insert into mmall_shipping
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="receiverName != null" >
+        receiver_name,
+      </if>
+      <if test="recriverPhone != null" >
+        recriver_phone,
+      </if>
+      <if test="recriverMobile != null" >
+        recriver_mobile,
+      </if>
+      <if test="recriverProvince != null" >
+        recriver_province,
+      </if>
+      <if test="recriverCity != null" >
+        recriver_city,
+      </if>
+      <if test="revriverDistrict != null" >
+        revriver_district,
+      </if>
+      <if test="revriverAddress != null" >
+        revriver_address,
+      </if>
+      <if test="revriverZip != null" >
+        revriver_zip,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null" >
+        #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="recriverPhone != null" >
+        #{recriverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recriverMobile != null" >
+        #{recriverMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="recriverProvince != null" >
+        #{recriverProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="recriverCity != null" >
+        #{recriverCity,jdbcType=VARCHAR},
+      </if>
+      <if test="revriverDistrict != null" >
+        #{revriverDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="revriverAddress != null" >
+        #{revriverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="revriverZip != null" >
+        #{revriverZip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mmall.pojo.Shipping" >
+    update mmall_shipping
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null" >
+        receiver_name = #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="recriverPhone != null" >
+        recriver_phone = #{recriverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="recriverMobile != null" >
+        recriver_mobile = #{recriverMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="recriverProvince != null" >
+        recriver_province = #{recriverProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="recriverCity != null" >
+        recriver_city = #{recriverCity,jdbcType=VARCHAR},
+      </if>
+      <if test="revriverDistrict != null" >
+        revriver_district = #{revriverDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="revriverAddress != null" >
+        revriver_address = #{revriverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="revriverZip != null" >
+        revriver_zip = #{revriverZip,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Shipping" >
+    update mmall_shipping
+    set user_id = #{userId,jdbcType=INTEGER},
+      receiver_name = #{receiverName,jdbcType=VARCHAR},
+      recriver_phone = #{recriverPhone,jdbcType=VARCHAR},
+      recriver_mobile = #{recriverMobile,jdbcType=VARCHAR},
+      recriver_province = #{recriverProvince,jdbcType=VARCHAR},
+      recriver_city = #{recriverCity,jdbcType=VARCHAR},
+      revriver_district = #{revriverDistrict,jdbcType=VARCHAR},
+      revriver_address = #{revriverAddress,jdbcType=VARCHAR},
+      revriver_zip = #{revriverZip,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
